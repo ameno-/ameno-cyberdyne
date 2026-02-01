@@ -26,6 +26,18 @@ Inspired by synthwave aesthetics and neon-drenched code editors, this theme tran
 | **Magenta** | `#ff0080` | Errors, extreme thinking |
 | **Void Black** | `#0a0a0f` | Background base |
 
+### 🔄 Variations
+
+Having trouble with the bright cyan on certain backgrounds? Try these alternatives:
+
+| Variant | Primary Color | Best For | File |
+|---------|--------------|----------|------|
+| **Teal** (`#00d4aa`) | Deep teal | Reduced eye strain, all backgrounds | `ameno-cyberdyne-teal.json` |
+| **Blue** (`#0080ff`) | Electric blue | Classic terminal look | `ameno-cyberdyne-blue.json` |
+| **Soft** (`#4dd0e1`) | Soft cyan | Modern, subtle elegance | `ameno-cyberdyne-soft.json` |
+
+See [COLOR_VARIATIONS.md](./COLOR_VARIATIONS.md) for detailed comparison and background compatibility matrix.
+
 ## 📦 Installation
 
 ### Option 1: Global Installation (Recommended)
