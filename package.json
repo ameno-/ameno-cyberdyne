@@ -1,0 +1,40 @@
+{
+  "name": "ameno-cyberdyne",
+  "version": "1.0.0",
+  "description": "A high-contrast cyberpunk Pi theme inspired by synthwave aesthetics - electric cyan, hot pink, acid green, and golden amber",
+  "main": "themes/ameno-cyberdyne.json",
+  "keywords": [
+    "pi",
+    "pi-theme",
+    "cyberpunk",
+    "synthwave",
+    "neon",
+    "dark-theme",
+    "terminal-theme",
+    "cli"
+  ],
+  "author": "ameno-",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ameno-/ameno-cyberdyne.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ameno-/ameno-cyberdyne/issues"
+  },
+  "homepage": "https://github.com/ameno-/ameno-cyberdyne#readme",
+  "pi": {
+    "themes": [
+      "themes/ameno-cyberdyne.json"
+    ]
+  },
+  "files": [
+    "themes/",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "install:global": "mkdir -p ~/.pi/agent/themes && cp themes/ameno-cyberdyne.json ~/.pi/agent/themes/",
+    "install:local": "mkdir -p .pi/themes && cp themes/ameno-cyberdyne.json .pi/themes/"
+  }
+}
