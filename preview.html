@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ameno Cyberdyne - Pi Theme Preview</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'SF Mono', Monaco, 'Cascadia Code', monospace;
+            background: #0a0a0f;
+            color: #fff;
+            padding: 40px;
+            line-height: 1.6;
+        }
+        
+        h1 {
+            color: #00f5ff;
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            text-shadow: 0 0 20px rgba(0, 245, 255, 0.5);
+        }
+        
+        .subtitle {
+            color: #ff2a6d;
+            font-size: 1.1rem;
+            margin-bottom: 40px;
+        }
+        
+        .theme-section {
+            margin-bottom: 60px;
+            border: 1px solid #1a1a2e;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        
+        .theme-header {
+            background: #0f0f17;
+            padding: 20px;
+            border-bottom: 2px solid;
+        }
+        
+        .theme-header.cyan { border-color: #00f5ff; }
+        .theme-header.teal { border-color: #00d4aa; }
+        .theme-header.blue { border-color: #0080ff; }
+        .theme-header.soft { border-color: #4dd0e1; }
+        
+        .theme-name {
+            font-size: 1.5rem;
+            margin-bottom: 5px;
+        }
+        
+        .theme-name.cyan { color: #00f5ff; }
+        .theme-name.teal { color: #00d4aa; }
+        .theme-name.blue { color: #0080ff; }
+        .theme-name.soft { color: #4dd0e1; }
+        
+        .theme-primary {
+            color: #888;
+            font-size: 0.9rem;
+        }
+        
+        .demo-area {
+            padding: 20px;
+            background: #0a0a0f;
+        }
+        
+        /* Code Demo */
+        .code-block {
+            background: #0f0f17;
+            border: 1px solid #1a1a2e;
+            border-radius: 6px;
+            padding: 20px;
+            margin-bottom: 20px;
+            font-size: 0.9rem;
+        }
+        
+        .code-block .keyword.cyan { color: #00f5ff; }
+        .code-block .keyword.teal { color: #00d4aa; }
+        .code-block .keyword.blue { color: #0080ff; }
+        .code-block .keyword.soft { color: #4dd0e1; }
+        
+        .code-block .function { color: #ffb800; }
+        .code-block .variable { color: #ff2a6d; }
+        .code-block .string { color: #39ff14; }
+        .code-block .type { color: #bd00ff; }
+        .code-block .comment { color: #666; }
+        
+        /* Tool Output Demo */
+        .tool-box {
+            border-radius: 6px;
+            margin-bottom: 20px;
+            overflow: hidden;
+        }
+        
+        .tool-header {
+            padding: 10px 15px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .tool-success .tool-header {
+            background: #0a1510;
+            color: #ffb800;
+            border-left: 3px solid #39ff14;
+        }
+        
+        .tool-error .tool-header {
+            background: #1f0a12;
+            color: #ffb800;
+            border-left: 3px solid #ff0080;
+        }
+        
+        .tool-pending .tool-header {
+            background: #0a0a12;
+            color: #ffb800;
+            border-left: 3px solid #666;
+        }
+        
+        .tool-content {
+            padding: 15px;
+            background: #0a0a12;
+            color: #ccc;
+            font-size: 0.85rem;
+        }
+        
+        /* Diff Demo */
+        .diff-view {
+            background: #0f0f17;
+            border: 1px solid #1a1a2e;
+            border-radius: 6px;
+            overflow: hidden;
+        }
+        
+        .diff-line {
+            padding: 4px 15px;
+            font-size: 0.85rem;
+            font-family: monospace;
+        }
+        
+        .diff-line.added {
+            background: rgba(45, 90, 61, 0.3);
+            color: #4ade80;
+        }
+        
+        .diff-line.removed {
+            background: rgba(90, 45, 45, 0.3);
+            color: #f87171;
+        }
+        
+        .diff-line.context {
+            color: #888;
+        }
+        
+        .diff-line .prefix {
+            display: inline-block;
+            width: 15px;
+        }
+        
+        /* Color Palette */
+        .palette {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .color-swatch {
+            background: #0f0f17;
+            border-radius: 6px;
+            overflow: hidden;
+        }
+        
+        .color-preview {
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: monospace;
+            font-size: 0.8rem;
+        }
+        
+        .color-info {
+            padding: 10px;
+            font-size: 0.8rem;
+        }
+        
+        .color-name {
+            color: #fff;
+            font-weight: bold;
+        }
+        
+        .color-hex {
+            color: #888;
+            font-family: monospace;
+        }
+        
+        .bg-cyan { background: #00f5ff; color: #000; }
+        .bg-teal { background: #00d4aa; color: #000; }
+        .bg-blue { background: #0080ff; color: #fff; }
+        .bg-soft { background: #4dd0e1; color: #000; }
+        .bg-pink { background: #ff2a6d; color: #fff; }
+        .bg-green { background: #39ff14; color: #000; }
+        .bg-amber { background: #ffb800; color: #000; }
+        .bg-purple { background: #bd00ff; color: #fff; }
+        .bg-magenta { background: #ff0080; color: #fff; }
+        .bg-void { background: #0a0a0f; color: #fff; border: 1px solid #333; }
+        .bg-slate { background: #1a1a2e; color: #fff; }
+    </style>
+</head>
+<body>
+    <h1>🔮 Ameno Cyberdyne</h1>
+    <p class="subtitle">High-contrast cyberpunk themes for Pi</p>
+
+    <!-- Theme 1: Original Cyan -->
+    <div class="theme-section">
+        <div class="theme-header cyan">
+            <div class="theme-name cyan">ameno-cyberdyne</div>
+            <div class="theme-primary">Primary: Electric Cyan #00f5ff</div>
+        </div>
+        <div class="demo-area">
+            <div class="code-block">
+                <span class="keyword cyan">export</span> <span class="keyword cyan">function</span> <span class="function">NeonButton</span>() {<br>
+                &nbsp;&nbsp;<span class="keyword cyan">const</span> [<span class="variable">glow</span>, <span class="variable">setGlow</span>] = <span class="function">useState</span>(<span class="variable">true</span>);<br>
+                &nbsp;&nbsp;<span class="keyword cyan">return</span> <span class="string">"Click me"</span>;<br>
+                }
+            </div>
+            
+            <div class="tool-box tool-success">
+                <div class="tool-header">🛠️ file.write</div>
+                <div class="tool-content">✓ Successfully wrote to component.tsx</div>
+            </div>
+            
+            <div class="diff-view">
+                <div class="diff-line removed"><span class="prefix">-</span><span class="keyword cyan">const</span> <span class="variable">oldValue</span> = <span class="string">"test"</span>;</div>
+                <div class="diff-line added"><span class="prefix">+</span><span class="keyword cyan">const</span> <span class="variable">newValue</span> = <span class="string">"production"</span>;</div>
+                <div class="diff-line context"><span class="prefix"> </span><span class="function">console</span>.<span class="function">log</span>(<span class="variable">newValue</span>);</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Theme 2: Teal -->
+    <div class="theme-section">
+        <div class="theme-header teal">
+            <div class="theme-name teal">ameno-cyberdyne-teal</div>
+            <div class="theme-primary">Primary: Deep Teal #00d4aa</div>
+        </div>
+        <div class="demo-area">
+            <div class="code-block">
+                <span class="keyword teal">export</span> <span class="keyword teal">function</span> <span class="function">NeonButton</span>() {<br>
+                &nbsp;&nbsp;<span class="keyword teal">const</span> [<span class="variable">glow</span>, <span class="variable">setGlow</span>] = <span class="function">useState</span>(<span class="variable">true</span>);<br>
+                &nbsp;&nbsp;<span class="keyword teal">return</span> <span class="string">"Click me"</span>;<br>
+                }
+            </div>
+            
+            <div class="tool-box tool-success">
+                <div class="tool-header">🛠️ file.write</div>
+                <div class="tool-content">✓ Successfully wrote to component.tsx</div>
+            </div>
+            
+            <div class="diff-view">
+                <div class="diff-line removed"><span class="prefix">-</span><span class="keyword teal">const</span> <span class="variable">oldValue</span> = <span class="string">"test"</span>;</div>
+                <div class="diff-line added"><span class="prefix">+</span><span class="keyword teal">const</span> <span class="variable">newValue</span> = <span class="string">"production"</span>;</div>
+                <div class="diff-line context"><span class="prefix"> </span><span class="function">console</span>.<span class="function">log</span>(<span class="variable">newValue</span>);</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Theme 3: Blue -->
+    <div class="theme-section">
+        <div class="theme-header blue">
+            <div class="theme-name blue">ameno-cyberdyne-blue</div>
+            <div class="theme-primary">Primary: Electric Blue #0080ff</div>
+        </div>
+        <div class="demo-area">
+            <div class="code-block">
+                <span class="keyword blue">export</span> <span class="keyword blue">function</span> <span class="function">NeonButton</span>() {<br>
+                &nbsp;&nbsp;<span class="keyword blue">const</span> [<span class="variable">glow</span>, <span class="variable">setGlow</span>] = <span class="function">useState</span>(<span class="variable">true</span>);<br>
+                &nbsp;&nbsp;<span class="keyword blue">return</span> <span class="string">"Click me"</span>;<br>
+                }
+            </div>
+            
+            <div class="tool-box tool-success">
+                <div class="tool-header">🛠️ file.write</div>
+                <div class="tool-content">✓ Successfully wrote to component.tsx</div>
+            </div>
+            
+            <div class="diff-view">
+                <div class="diff-line removed"><span class="prefix">-</span><span class="keyword blue">const</span> <span class="variable">oldValue</span> = <span class="string">"test"</span>;</div>
+                <div class="diff-line added"><span class="prefix">+</span><span class="keyword blue">const</span> <span class="variable">newValue</span> = <span class="string">"production"</span>;</div>
+                <div class="diff-line context"><span class="prefix"> </span><span class="function">console</span>.<span class="function">log</span>(<span class="variable">newValue</span>);</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Theme 4: Soft -->
+    <div class="theme-section">
+        <div class="theme-header soft">
+            <div class="theme-name soft">ameno-cyberdyne-soft</div>
+            <div class="theme-primary">Primary: Soft Cyan #4dd0e1</div>
+        </div>
+        <div class="demo-area">
+            <div class="code-block">
+                <span class="keyword soft">export</span> <span class="keyword soft">function</span> <span class="function">NeonButton</span>() {<br>
+                &nbsp;&nbsp;<span class="keyword soft">const</span> [<span class="variable">glow</span>, <span class="variable">setGlow</span>] = <span class="function">useState</span>(<span class="variable">true</span>);<br>
+                &nbsp;&nbsp;<span class="keyword soft">return</span> <span class="string">"Click me"</span>;<br>
+                }
+            </div>
+            
+            <div class="tool-box tool-success">
+                <div class="tool-header">🛠️ file.write</div>
+                <div class="tool-content">✓ Successfully wrote to component.tsx</div>
+            </div>
+            
+            <div class="diff-view">
+                <div class="diff-line removed"><span class="prefix">-</span><span class="keyword soft">const</span> <span class="variable">oldValue</span> = <span class="string">"test"</span>;</div>
+                <div class="diff-line added"><span class="prefix">+</span><span class="keyword soft">const</span> <span class="variable">newValue</span> = <span class="string">"production"</span>;</div>
+                <div class="diff-line context"><span class="prefix"> </span><span class="function">console</span>.<span class="function">log</span>(<span class="variable">newValue</span>);</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Color Palette -->
+    <h2 style="color: #ffb800; margin-bottom: 20px;">🎨 Complete Color Palette</h2>
+    <div class="palette">
+        <div class="color-swatch">
+            <div class="color-preview bg-cyan">#00f5ff</div>
+            <div class="color-info">
+                <div class="color-name">Electric Cyan</div>
+                <div class="color-hex">Original primary</div>
+            </div>
+        </div>
+        <div class="color-swatch">
+            <div class="color-preview bg-teal">#00d4aa</div>
+            <div class="color-info">
+                <div class="color-name">Deep Teal</div>
+                <div class="color-hex">Teal variant</div>
+            </div>
+        </div>
+        <div class="color-swatch">
+            <div class="color-preview bg-blue">#0080ff</div>
+            <div class="color-info">
+                <div class="color-name">Electric Blue</div>
+                <div class="color-hex">Blue variant</div>
+            </div>
+        </div>
+        <div class="color-swatch">
+            <div class="color-preview bg-soft">#4dd0e1</div>
+            <div class="color-info">
+                <div class="color-name">Soft Cyan</div>
+                <div class="color-hex">Soft variant</div>
+            </div>
+        </div>
+        <div class="color-swatch">
+            <div class="color-preview bg-pink">#ff2a6d</div>
+            <div class="color-info">
+                <div class="color-name">Hot Pink</div>
+                <div class="color-hex">Variables</div>
+            </div>
+        </div>
+        <div class="color-swatch">
+            <div class="color-preview bg-green">#39ff14</div>
+            <div class="color-info">
+                <div class="color-name">Acid Green</div>
+                <div class="color-hex">Strings, success</div>
+            </div>
+        </div>
+        <div class="color-swatch">
+            <div class="color-preview bg-amber">#ffb800</div>
+            <div class="color-info">
+                <div class="color-name">Golden Amber</div>
+                <div class="color-hex">Functions, tool titles</div>
+            </div>
+        </div>
+        <div class="color-swatch">
+            <div class="color-preview bg-purple">#bd00ff</div>
+            <div class="color-info">
+                <div class="color-name">Violet</div>
+                <div class="color-hex">Types, numbers</div>
+            </div>
+        </div>
+        <div class="color-swatch">
+            <div class="color-preview bg-magenta">#ff0080</div>
+            <div class="color-info">
+                <div class="color-name">Magenta</div>
+                <div class="color-hex">Errors, extreme</div>
+            </div>
+        </div>
+        <div class="color-swatch">
+            <div class="color-preview bg-void">#0a0a0f</div>
+            <div class="color-info">
+                <div class="color-name">Void Black</div>
+                <div class="color-hex">Background</div>
+            </div>
+        </div>
+        <div class="color-swatch">
+            <div class="color-preview bg-slate">#1a1a2e</div>
+            <div class="color-info">
+                <div class="color-name">Slate Purple</div>
+                <div class="color-hex">Selected bg</div>
+            </div>
+        </div>
+    </div>
+
+    <div style="margin-top: 40px; padding: 20px; background: #0f0f17; border-radius: 8px; text-align: center; color: #666;">
+        <p>Open this file in a browser to see the color previews</p>
+        <p style="font-family: monospace; margin-top: 10px;">open preview.html</p>
+    </div>
+</body>
+</html>
