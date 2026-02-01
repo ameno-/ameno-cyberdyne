@@ -1,6 +1,6 @@
 # 🔮 Ameno Cyberdyne
 
-A high-contrast cyberpunk theme for [Pi](https://github.com/badlogic/pi) — the AI coding agent harness.
+A high-contrast cyberpunk theme for [Pi](https://github.com/badlogic/pi) — the AI coding agent harness. Designed specifically for the Pi coding agent terminal interface.
 
 Inspired by synthwave aesthetics and neon-drenched code editors, this theme transforms your terminal into a futuristic coding environment with electric cyan, hot pink, acid green, and golden amber.
 

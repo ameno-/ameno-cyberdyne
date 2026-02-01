@@ -1,6 +1,6 @@
 {
   "name": "ameno-cyberdyne",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A high-contrast cyberpunk Pi theme inspired by synthwave aesthetics - electric cyan, hot pink, acid green, and golden amber",
   "main": "themes/ameno-cyberdyne.json",
   "exports": {
@@ -11,13 +11,20 @@
   },
   "keywords": [
     "pi",
+    "pi-coding-agent",
+    "pi-coding-agent-theme",
     "pi-theme",
+    "coding-agent",
+    "ai-theme",
     "cyberpunk",
     "synthwave",
     "neon",
     "dark-theme",
     "terminal-theme",
-    "cli"
+    "terminal-colors",
+    "tui-theme",
+    "cli",
+    "cli-theme"
   ],
   "author": "ameno-",
   "license": "MIT",
